@@ -18,7 +18,7 @@ from setuptools import setup
 setup(
     name="hiplot-mlflow",
     description="HiPlot fetcher plugin for MLflow experiment tracking.",
-    url="https://github.com/imrehg/hiplot-mlflow",
+    url="https://github.com/facultyai/hiplot-mlflow",
     author="Faculty",
     author_email="opensource@faculty.ai",
     license="Apache Software License",
