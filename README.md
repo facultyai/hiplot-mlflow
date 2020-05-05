@@ -15,10 +15,10 @@ pip install hiplot_mlflow
 
 ### Visualisation
 
-You can visualise experiments either in a Jupyter notebook or using HiPLot's built in server.
+You can visualise experiments either in a Jupyter notebook or using HiPlot's built in server.
 
 This library implements an [experiment fetcher](https://facebookresearch.github.io/hiplot/tuto_webserver.html#experiments-uri)
-using the `mlflow://` schema. After the schema you can use eitherthe experiment number, or name:
+using the `mlflow://` schema. After the schema you can use either the experiment number, or name:
 
 ```text
 mlflow://id/0
@@ -30,7 +30,6 @@ supports these options:
 
 * `tag`: setting it to any value enables returning all the tags as well (by
   default only `params` and `metrics` are returned). For example: `mlflow://id/0?tags=yes`
-
 
 There are also options to look up experiments directly by ID or name, and thus all
 the forms that you can use to fetch experiments are:
@@ -60,7 +59,7 @@ experiments = hiplot_mlflow.fetch("my-lovely-experuments")
 experiments.display(force_full_width=True)
 ```
 
-![Loading HiPLot in a notebook](images/notebook_name.png)
+![Loading HiPlot in a notebook](images/notebook_name.png)
 
 See more about what you can do with the returned `hiplot.Experiment` values in the
 [HiPlot documentation](https://facebookresearch.github.io/hiplot/experiment_settings.html).
