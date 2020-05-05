@@ -3,9 +3,7 @@
 A  [HiPlot](https://facebookresearch.github.io/hiplot/index.html) experiment fetcher plugin
 for [MLflow](https://mlflow.org/), to help visualise your tracked experiments.
 
-## Usage
-
-### Installation
+## Installation
 
 Install this library with `pip` as:
 
@@ -13,7 +11,7 @@ Install this library with `pip` as:
 pip install hiplot_mlflow
 ```
 
-### Visualisation
+## Usage
 
 You can visualise experiments either in a Jupyter notebook or using HiPlot's built in server.
 
