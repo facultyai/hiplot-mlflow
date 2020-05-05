@@ -14,10 +14,14 @@
 
 
 from setuptools import setup
+from pathlib import Path
+
+README = Path(__file__).parent / "README.rst"
 
 setup(
     name="hiplot-mlflow",
     description="HiPlot fetcher plugin for MLflow experiment tracking.",
+    long_description=README.read_text(),
     url="https://github.com/facultyai/hiplot-mlflow",
     author="Faculty",
     author_email="opensource@faculty.ai",
