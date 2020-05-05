@@ -15,46 +15,29 @@ pip install hiplot_mlflow
 
 You can visualise experiments either in a Jupyter notebook or using HiPlot's built in server.
 
-This library implements an [experiment fetcher](https://facebookresearch.github.io/hiplot/tuto_webserver.html#experiments-uri)
-using the `mlflow://` schema. After the schema you can use either the experiment number, or name:
+### Notebook
 
-```text
-mlflow://id/0
-mlflow://name/experiment-name
-```
-
-You can also use query strings to modify the returned results. Currently the library
-supports these options:
-
-* `tag`: setting it to any value enables returning all the tags as well (by
-  default only `params` and `metrics` are returned). For example: `mlflow://id/0?tags=yes`
-
-There are also options to look up experiments directly by ID or name, and thus all
-the forms that you can use to fetch experiments are:
+In a Jupyter notebook, use `hiplot_mlflow.fetch` to retrieve an MLflow
+experiment by name, and display it with HiPlot:
 
 ```Python
 import hiplot_mlflow
-# by name
-experiment = hiplot_mlflow.fetch("experiment-name")
-# or by ID
-experiment = hiplot_mlflow.fetch_by_id(0)
-# or by URI, either using the ID or name format
-experiment = hiplot_mlflow.fetch_by_uri("mlflow://id/0")
-```
-
-You can enable reporting tags when calling these functions by
-setting `include_tag=True`.
-
-#### Notebooks
-
-When in a notebook, you most likely want to use the `hiplot_mlflow.fetch`
-function for simplicity, fetching results by experiment name:
-
-```Python
-import hiplot_mlflow
-experiments = hiplot_mlflow.fetch("my-lovely-experuments")
-# Display the fetched experiments in the window
+experiments = hiplot_mlflow.fetch("my-lovely-experiment")
 experiments.display(force_full_width=True)
+```
+
+You can also retrieve experiments by their MLflow experiment ID:
+
+```Python
+experiment = hiplot_mlflow.fetch_by_id(0)
+```
+
+By default, MLflow tags are not shown (only MLflow metrics and parameters are
+shown). To display them, pass `include_tag=True` to either of the fetch
+functions, for example:
+
+```Python
+experiment = hiplot_mlflow.fetch("my-lovely-experiment", include_tags=True)
 ```
 
 ![Loading HiPlot in a notebook](images/notebook_name.png)
@@ -62,21 +45,36 @@ experiments.display(force_full_width=True)
 See more about what you can do with the returned `hiplot.Experiment` values in the
 [HiPlot documentation](https://facebookresearch.github.io/hiplot/experiment_settings.html).
 
-#### Built in server
+### HiPlot Server
 
-To use [HiPlot's built in webserver](https://facebookresearch.github.io/hiplot/tuto_webserver.html),
-you can start it up with this custom fetcher loaded:
+To use [HiPlot's built in webserver](https://facebookresearch.github.io/hiplot/tuto_webserver.html)
+with `hiplot-mlflow`, you can start it up with the custom
+[experiment fetcher](https://facebookresearch.github.io/hiplot/tuto_webserver.html#experiments-uri)
+implemented by this package:
 
 ```Shell
 hiplot hiplot_mlflow.fetch_by_uri
 ```
 
-Then can use either the previous full URI format to load your experiments.
+You can then use the `mlflow://` schema to access MLflow experiments in HiPlot
+by either experiment or name, for example:
+
+```text
+mlflow://name/experiment-name
+mlflow://id/0
+```
 
 ![Loading HiPlot server with experiment name](images/server_name.png)
 
+You can also add `tags=yes` as a query string parameter to include tags in the
+output, for example:
+
+```text
+mlflow://name/experiment-name?tags=yes
+```
+
 You can also use the [multiple experiments](https://facebookresearch.github.io/hiplot/tuto_webserver.html#compare-multiple-experiments)
-loading syntax as well. Either the dictionary format (to define your own labels):
+loading syntax. Either the dictionary format (to define your own labels):
 
 ```text
 multi://{
