@@ -1,4 +1,4 @@
-# HiPlot-MLflow
+# hiplot-mlflow
 
 A  [HiPlot](https://facebookresearch.github.io/hiplot/index.html) experiment fetcher plugin
 for [MLflow](https://mlflow.org/), to help visualise your tracked experiments.
