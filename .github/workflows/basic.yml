@@ -30,7 +30,6 @@ jobs:
       run: tox -e ${{ matrix.tox-env }}
 
   test:
-    needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
