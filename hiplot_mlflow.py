@@ -101,8 +101,7 @@ def fetch_by_uri(uri: str) -> hiplot.Experiment:
 
 
 def _get_experiment_id_from_name(name: str) -> Any:
-    """Get an MLflow experiment's ID from its name
-    """
+    """Get an MLflow experiment's ID from its name"""
     client = tracking.MlflowClient()
     experiment = client.get_experiment_by_name(name)
     if experiment is None:
@@ -147,7 +146,8 @@ def _create_experiment_from_dataframe(
                 values[t] = row[t]
 
         dp = hiplot.Datapoint(
-            uid=str(uuid.UUID(row["run_id"])), values=values,
+            uid=str(uuid.UUID(row["run_id"])),
+            values=values,
         )
         exp.datapoints.append(dp)
     return exp
