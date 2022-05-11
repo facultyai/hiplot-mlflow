@@ -30,6 +30,13 @@ setup(
     setup_requires=["setuptools_scm"],
     install_requires=["hiplot", "mlflow", "numpy"],
     extras_require={
-        "dev": ["black", "flake8", "flake8-black", "mypy", "pytest", "tox"]
+        "dev": [
+            "black==22.3.0",
+            "flake8",
+            "flake8-black",
+            "mypy",
+            "pytest",
+            "tox",
+        ]
     },
 )

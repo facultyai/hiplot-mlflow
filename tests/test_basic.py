@@ -77,15 +77,13 @@ EXPERIMENT_WITH_TAGS = hiplot.Experiment(
 
 
 def test_wrong_schema():
-    """Test passing unsupported schema.
-    """
+    """Test passing unsupported schema."""
     with pytest.raises(hiplot.ExperimentFetcherDoesntApply):
         hiplot_mlflow.fetch_by_uri("something://")
 
 
 def test_unsupported_reference_type():
-    """Test passing correct schema and unsupported reference type.
-    """
+    """Test passing correct schema and unsupported reference type."""
     with pytest.raises(hiplot.ExperimentValidationError):
         hiplot_mlflow.fetch_by_uri(f"mlflow://something/else")
 
