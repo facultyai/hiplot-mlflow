@@ -85,7 +85,7 @@ def test_wrong_schema():
 def test_unsupported_reference_type():
     """Test passing correct schema and unsupported reference type."""
     with pytest.raises(hiplot.ExperimentValidationError):
-        hiplot_mlflow.fetch_by_uri(f"mlflow://something/else")
+        hiplot_mlflow.fetch_by_uri("mlflow://something/else")
 
 
 @pytest.mark.parametrize(
